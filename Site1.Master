@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebFinal.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <title>MercadoValen</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="bg-info-subtle">
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-expand-lg bg-info">
+            <img width="96" height="96" src="https://img.icons8.com/fluency/96/online-shopping.png" alt="online-shopping" />
+            <div class="container-fluid">
+                <a class="navbar-brand" href="Default.aspx" style="font-size: 32px; font-family: ui-sans-serif; color: blue">MercadoValen</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div style="font-family: ui-sans-serif; font-size: 22px" class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
+                        <a class="nav-link" href="Lista.aspx">Lista de artículos</a>
+                        <a class="nav-link" href="MiPerfil.aspx">Mi perfil</a>
+                        <div style="margin-inline: 20px">
+                            <asp:ImageButton ID="ImageButton2" ImageUrl="https://img.icons8.com/fluency/48/mail--v1.png" Width="48" Height="48" PostBackUrl="~/Contacto.aspx" title="Contacto" runat="server" />
+                        </div>
+                        <div style="margin-inline: 20px">
+                            <asp:ImageButton ID="ImageButton3" ImageUrl="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-stars-achievements-flaticons-lineal-color-flat-icons.png"
+                                alt="external-stars-achievements-flaticons-lineal-color-flat-icons" Width="48" Height="48" PostBackUrl="~/Favoritos.aspx" title="favoritos" runat="server" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%  
+                if (login == false)
+                {%>
+            <div class="col-auto" style="margin-right: 12px">
+                <a href="Login.aspx" class="btn btn-success">Login</a>
+            </div>
+            <div class="col-auto" style="margin-right: 12px">
+                <a href="Registro.aspx" class="btn btn-outline-success">Registrarse</a>
+            </div>
+            <div class="col-auto" style="margin-right: 12px">
+                <asp:Image ID="ImageAvatar" ImageUrl="https://img.icons8.com/fluency/48/test-account.png" runat="server" />
+            </div>
+            <%} %>
+            <%else
+                {  %>
+            <div class="col-auto" style="margin-right: 12px">
+                <asp:Button CssClass="btn btn-success" OnClick="ButtonSalir_Click" ID="ButtonSalir" runat="server" Text="Salir" />
+            </div>
+            <div class="col-auto" style="margin-right: 12px">
+                <asp:Label ID="LabelEmail" style="font-family: ui-sans-serif" runat="server" Text=""></asp:Label>
+            </div>
+            <div class="col-auto" style="margin-right: 12px">               
+                <asp:ImageButton ID="ImagenPerfil" Title="Perfil" OnClick="ImagenPerfil_Click" Style="width:60px; height:60px ;border-radius:50%;" runat="server" />
+            </div>
+            <%} %>
+        </nav>
+
+        <hr />
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    
+</body>
+</html>
+
+
+
+
